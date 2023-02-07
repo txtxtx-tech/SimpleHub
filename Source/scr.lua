@@ -27,5 +27,6 @@ local Nitron = LoadDependency("Webserver/Nitron")
 -- values ig
 local build = 1
 
-local Key = KeySystem:KeyIsValid("deep_sleep")
-print(Key.valid)
+Nitron:KeyIsValid("1"):andThen(function(result)
+    print(result.isvalid)
+end)   

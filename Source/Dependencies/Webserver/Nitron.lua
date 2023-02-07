@@ -3,7 +3,6 @@
     Simple implementation of the key system.
 ]]
 
-local hi = {}
 local Nitron = { }
 local WEBSERVER = "https://im-so-silly-im-so-goofy.trixxertrix.repl.co"
 
