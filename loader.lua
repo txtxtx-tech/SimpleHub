@@ -6,9 +6,11 @@
 local HttpService = game:GetService("HttpService")
 local repo = "https://api.github.com/repos/RBXSimpleHub/SimpleHub/contents/Source/%s"
 
-if not isfolder("SimpleHub") then
-    makefolder("SimpleHub")
+if isfolder("SimpleHub") then
+    delfolder("SimpleHub")
 end
+
+makefolder("SimpleHub")
 
 local function parseobject(item)
     if item.type == "dir" then
