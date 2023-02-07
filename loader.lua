@@ -3,25 +3,31 @@
     Loader for the hub.
 ]]
 
-local safe_request = request or http_request or (http and http.request) or (syn and syn.request)
 local HttpService = game:GetService("HttpService")
 local repo = "https://api.github.com/repos/RBXSimpleHub/SimpleHub/contents/Source/%s"
+
+if not isfolder("SimpleHub") then
+    makefolder("SimpleHub")
+end
 
 local function parseobject(item)
     if item.type == "dir" then
         local items = HttpService:JSONDecode(
-            safe_request({Url=string.format(repo, ({item.path:gsub("Source/", "")})[1]), Method = "GET"}).Body
+            game:HttpGet("https://api.github.com/repos/RBXSimpleHub/SimpleHub/contents/Source/" .. ({item.path:gsub("Source/", "")})[1])
         )
+
+        makefolder("SimpleHub/" .. ({item.path:gsub("Source/", ""):gsub(item.name, "")})[1] .. "/" .. item.name)
 
         for _, itemInLoop in next, items do
             parseobject(itemInLoop)
         end
     elseif item.type == "file" then
-        local content = safe_request({Url=item.download_url, Method = "GET"}).Body
-        writefile("SimpleHub/" .. ({item.path:gsub("Source/", "")})[1], contents)
+        local content = game:HttpGet(item.download_url)
+        writefile("SimpleHub/" .. ({item.path:gsub("Source/", "")})[1], tostring(content))
+
     end
 end
 
-for _, itemInLoop in next, HttpService:JSONDecode( safe_request({Url="https://api.github.com/repos/RBXSimpleHub/SimpleHub/contents/Source/", Method = "GET"}).Body ) do
+for _, itemInLoop in next, HttpService:JSONDecode( game:HttpGet("https://api.github.com/repos/RBXSimpleHub/SimpleHub/contents/Source/") ) do
     parseobject(itemInLoop)
 end
