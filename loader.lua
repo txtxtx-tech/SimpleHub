@@ -7,8 +7,6 @@ local safe_request = request or http_request or (http and http.request) or (syn 
 local HttpService = game:GetService("HttpService")
 local repo = "https://api.github.com/repos/RBXSimpleHub/SimpleHub/contents/Source/%s"
 
-safe_request({Url="https://api.github.com/repos/RBXSimpleHub/SimpleHub/contents/Source/", Method = "GET"})
-
 local function parseobject(item)
     if item.type == "dir" then
         local items = HttpService:JSONDecode(
