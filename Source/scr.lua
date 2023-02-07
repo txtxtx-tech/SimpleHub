@@ -21,12 +21,12 @@ getgenv().SimpleHub = {
 
 -- main hub
 local Promise = LoadDependency("Promise")
-local Trove = LoadDependency("Trove")
 local Webserver = LoadDependency("Webserver")
+-- replacing trove with maid
 
 -- values ig
 local build = 1
 
-Webserver:KeyIsValid("1"):andThen(function(result)
-    print(result.isvalid)
-end)   
+Webserver:KeyIsValid("key_goes_here"):andThen(function(result)
+    print(result)
+end)
