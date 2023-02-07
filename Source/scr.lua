@@ -7,7 +7,7 @@ local function LoadDependency(name)
     local DependencyBody = readfile(string.format("SimpleHub/Dependencies/%s.lua", name))
     local Dependency = loadstring(DependencyBody)()
 
-    return Dependency
+    return Dependency()
 end
 
 -- remove any original simplehub processes that might exist
