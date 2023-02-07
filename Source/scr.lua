@@ -22,7 +22,7 @@ getgenv().SimpleHub = {
 -- main hub
 local Promise = LoadDependency("Promise")
 local Webserver = LoadDependency("Webserver")
--- replacing trove with maid
+local Maid = LoadDependency("Maid")
 
 -- values ig
 local build = 1
