@@ -19,7 +19,7 @@ function Nitron:KeyIsValid(key)
             Url = string.format(WEBSERVER .. "/validcode?key=%s", HttpService:UrlEncode(key)),
             Method = "GET",
             Headers = { ["Content-Type"] = "application/json" }
-        }).Body))
+        }).Body).isvalid)
     end)
 end
 
