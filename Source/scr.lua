@@ -5,7 +5,7 @@
 -- simple function  for loading dependencies
 local function LoadDependency(name)
     local DependencyBody = readfile(string.format("SimpleHub/Dependencies/%s.lua", name))
-    local Dependency = loadstring(DependencyBody)()
+    local Dependency = loadstring(DependencyBody)
 
     return Dependency()
 end
