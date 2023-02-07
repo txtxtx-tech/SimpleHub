@@ -22,11 +22,11 @@ getgenv().SimpleHub = {
 -- main hub
 local Promise = LoadDependency("Promise")
 local Trove = LoadDependency("Trove")
-local Nitron = LoadDependency("Webserver/Nitron")
+local Webserver = LoadDependency("Webserver")
 
 -- values ig
 local build = 1
 
-Nitron:KeyIsValid("1"):andThen(function(result)
+Webserver:KeyIsValid("1"):andThen(function(result)
     print(result.isvalid)
 end)   
